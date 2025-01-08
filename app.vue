@@ -1,10 +1,19 @@
 <script setup lang="ts">
 
 import {init, useLaunchParams} from "@telegram-apps/sdk-vue";
+import {type LaunchParams as TgLaunchParams} from "@telegram-apps/types";
 
-init();
-let tgParams = useLaunchParams();
-let username = tgParams.initData?.user?.username || 'Username';
+let tgParams: TgLaunchParams;
+let username = 'Username';
+
+try {
+    init();
+    tgParams = useLaunchParams();
+    username = tgParams.initData!!.user!!.firstName || 'Empty';
+} catch (err) {
+    console.log(err);
+}
+
 let balance = ref(0);
 let taps = ref(0);
 
@@ -15,10 +24,10 @@ onBeforeMount(async () => {
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify(tgParams.initData),
+            body: JSON.stringify({initData: tgParams.initData}),
         })
     } catch (error) {
-        alert('Authentication error')
+        alert('Authentication error: '+ error);
         return;
     }
 
@@ -52,7 +61,7 @@ async function sendTaps(value: number): Promise<number> {
             return data;
         }
     } catch (error) {
-        alert('Sending taps to the server');
+        alert('Sending taps to the server error: ' + error);
     }
 
     return 0;
@@ -87,9 +96,18 @@ function tapHandler(): void {
     </main>
 </template>
 
-<style scoped>
+<style>
 .img-size {
     width: 70%;
     height: auto;
 }
+
+body {
+    background: white;
+}
+
+img {
+    touch-action: manipulation;
+}
+
 </style>

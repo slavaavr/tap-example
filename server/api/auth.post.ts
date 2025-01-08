@@ -1,6 +1,8 @@
+import {validateTelegramData} from "~/server/utils/tgAuth";
+
 export default defineEventHandler(async (event) => {
-    let body = await readBody(event) || '';
-    let user = validateTelegramData(body);
+    let {initData} = await readBody(event);
+    let user = validateTelegramData(initData);
     
     // Create session
     const expires = new Date(Date.now() + Session.SESSION_DURATION)

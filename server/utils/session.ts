@@ -9,7 +9,7 @@ export class Session {
         return await new SignJWT(payload)
             .setProtectedHeader({alg: "HS256"})
             .setIssuedAt()
-            .setExpirationTime(this.SESSION_DURATION)
+            .setExpirationTime(Date.now() + this.SESSION_DURATION)
             .sign(this.key)
     }
     

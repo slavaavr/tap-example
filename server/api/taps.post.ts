@@ -6,12 +6,12 @@ export default defineEventHandler(async (event) => {
         return
     }
     
-    if (body.taps > 1000) {
-        return
-    }
-    
     let userId = event.context.userId;
     let balance = storage.get(userId) || 0;
+    
+    if (body.taps > 1000) {
+        return balance;
+    }
     
     let bonus = 0;
     if (balance % 10 === 7) {
