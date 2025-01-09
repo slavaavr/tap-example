@@ -46,8 +46,10 @@ export function validateTelegramData(tgInitDataRaw: string): User {
         throw new Error('Hash validation failed');
     }
     
+    let user = JSON.parse(initData.get('user')!!)
+    
     return {
-        id: initData.get('id')!!,
-        name: initData.get('first_name') || '',
+        id: user.id,
+        name: user.firstName,
     }
 }
