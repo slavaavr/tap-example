@@ -24,7 +24,7 @@ onBeforeMount(async () => {
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({initData: tgParams.initData}),
+            body: JSON.stringify({initData: tgParams.initDataRaw}),
         })
     } catch (error) {
         alert('Authentication error: '+ error);
