@@ -1,41 +1,30 @@
-# Nuxt Minimal Starter
+# Tap Game
 
-Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+## Notes
+https://github.com/Telegram-Mini-Apps/telegram-apps/blob/master/packages/init-data-node/src/validate.ts#L24
+
+## Run
+- fill the .env file taking into account .env.example
+- and run
+```bash
+npm run build
+source .env && node .output/server/index.mjs
+```
 
 ## Setup
-
-Make sure to install dependencies:
 
 ```bash
 # npm
 npm install
-
-# pnpm
-pnpm install
-
-# yarn
-yarn install
-
-# bun
-bun install
 ```
 
-## Development Server
+## Development
 
 Start the development server on `http://localhost:3000`:
 
 ```bash
 # npm
 npm run dev
-
-# pnpm
-pnpm dev
-
-# yarn
-yarn dev
-
-# bun
-bun run dev
 ```
 
 ## Production
@@ -45,31 +34,4 @@ Build the application for production:
 ```bash
 # npm
 npm run build
-
-# pnpm
-pnpm build
-
-# yarn
-yarn build
-
-# bun
-bun run build
 ```
-
-Locally preview production build:
-
-```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
